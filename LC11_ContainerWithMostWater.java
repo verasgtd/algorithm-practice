@@ -9,7 +9,6 @@
 
 public class LC11_ContainerWithMostWater {
     public static int maxArea(int[] height) {
-
         int left = 0;
         int right = height.length - 1;
         int result = calculateArea( height,  left,  right);
@@ -17,7 +16,6 @@ public class LC11_ContainerWithMostWater {
             if(height[left]<height[right]){
                 while(((height[left+1]<height[left])) && left<right ) left++;
                 left++;
-
             } else {
                 while(((height[right-1]<height[right]) )&& right>left ) right--;
                 right--;
@@ -29,15 +27,14 @@ public class LC11_ContainerWithMostWater {
                 }
             }
             else return  result;
-
         }
-
         return result;
     }
 
     public static int calculateArea(int[] height, int left, int right){
         return Math.abs(left - right)*Math.min(height[right],height[left]);
     }
+    
     public static void main(String[] args) {
         int[] height1 = {1,8,6,2,5,4,8,3,7};
         int[] height2 = {1,1};
