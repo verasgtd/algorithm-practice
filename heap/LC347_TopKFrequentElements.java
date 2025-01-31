@@ -17,13 +17,17 @@ public class LC347_TopKFrequentElements {
     public static void main(String[] args) {
         int[] example1 = {1,1,1,2,2,3};
         int[] expected1 = {1,2};
-        topKFrequent(example1, 2);
+        int[] result1 = topKFrequent(example1, 2);
         System.out.printf("Expected: %s\n", Arrays.toString(expected1));
+        System.out.printf("Result: %s\n", Arrays.toString(result1));
+
 
         int[] example2 = {1};
         int[] expected2 = {1};
-        topKFrequent(example2, 1);
+        int[] result2 =topKFrequent(example2, 1);
         System.out.printf("Expected: %s\n", Arrays.toString(expected2));
+        System.out.printf("Result: %s\n", Arrays.toString(result2));
+
     }
 
     public static int[] topKFrequent(int[] nums, int k) {
