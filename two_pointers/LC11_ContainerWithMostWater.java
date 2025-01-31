@@ -42,6 +42,6 @@ public class LC11_ContainerWithMostWater {
         int res2 =maxArea(height2);
 
         System.out.println("result1="+res1);
-        System.out.println("result2=%s"+res2);
+        System.out.println("result2="+res2);
     }
 }
