@@ -1,10 +1,11 @@
 package hash;
-import java.util.*;
 // LC242_ValidAnagram.java
 // Source: https://leetcode.com/problems/valid-anagram/
 
 // Given two strings s and t, return true if t is an anagram
 // of s, and false otherwise.
+
+import java.util.Objects;
 
 // Example 1:
 // Input: s = "anagram", t = "nagaram"
@@ -37,7 +38,7 @@ public class LC242_ValidAnagram {
 
     public static boolean isAnagram(String s, String t) {
         // Step 1: Check for null values and quick reference check
-        if (s == t) {
+        if (Objects.equals(s, t)) {
             return true;
         }
 
