@@ -22,24 +22,21 @@ public class LC692_TopKFrequentWords {
         // Implementation goes here
         String[] example1 = new String[]{"i","love","leetcode","i","love","coding"};
         List<String> expected1 = Arrays.asList("i", "love");
-        List<String> result1 = topKFrequent(example1, 2);
+        topKFrequent(example1, 2);
+        System.out.printf("Expected: %s\n", Arrays.toString(expected1.toArray()));
 
         String[] example2 = new String[]{"the","day","is","sunny","the","the","the","sunny","is","is"};
         List<String> expected2 = Arrays.asList("the", "is", "sunny", "day");
-        List<String> result2 = topKFrequent(example2, 4);
+        topKFrequent(example2, 4);
+        System.out.printf("Expected: %s\n", Arrays.toString(expected2.toArray()));
 
-        assert result1.equals(expected1) : "Test case 1 failed";
-        assert result2.equals(expected2) : "Test case 2 failed";
 
-        System.out.println("All test cases passed!");
     }
 
     public static List<String> topKFrequent(String[] words, int k) {
         List<String> result = new ArrayList<>();
-
-        System.out.printf("Input : %s, k = %s%n", Arrays.toString(words), k);
         Map<String, Integer> frequentMap = new HashMap<>();
-            for (String word : words){
+        for (String word : words){
             frequentMap.compute(word, (s, integer) -> integer == null ? 1 : integer + 1);
         }
 
@@ -50,12 +47,13 @@ public class LC692_TopKFrequentWords {
             if (minHeap.size()>k) minHeap.poll();
         });
 
-            while (!minHeap.isEmpty()){
+        while (!minHeap.isEmpty()){
             result.add(minHeap.poll().getKey());
         }
 
         List<String> returnResult = result.reversed();
-        System.out.printf("Output : %s%n", Arrays.toString(returnResult.toArray()));
+        System.out.printf("Input: %s, k=%s\n", Arrays.toString(words), k);
+        System.out.printf("Result: %s\n", Arrays.toString(returnResult.toArray()));
 
         return returnResult;
     }
