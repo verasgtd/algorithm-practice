@@ -23,5 +23,19 @@ public class ListNode {
         previous.next = posNode;
         return head;
     }
+    public static ListNode fromArray(int[] x) {
+        return fromArray(x, -1);
+    }
+    @Override
+    public String toString(){
+        ListNode pointer = this;
+        StringBuilder result = new StringBuilder();
+        while(pointer!=null){
+            result.append(pointer.val).append(", ");
+            pointer = pointer.next;
+        }
+        return result.toString();
+    }
+
 
 }
