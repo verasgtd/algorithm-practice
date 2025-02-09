@@ -10,30 +10,24 @@ package two_pointers;
 public class LC11_ContainerWithMostWater {
     public static int maxArea(int[] height) {
         int left = 0;
-        int right = height.length - 1;
-        int result = calculateArea( height,  left,  right);
-        while (left<right){
-            if(height[left]<height[right]){
-                while(((height[left+1]<height[left])) && left<right ) left++;
-                left++;
-            } else {
-                while(((height[right-1]<height[right]) )&& right>left ) right--;
-                right--;
+        int right = height.length-1;
+        int maxVolume = 0;
+        while(left<right){
+            int minHeight = Math.min(height[left], height[right]);
+            maxVolume = Math.max(maxVolume, minHeight*(right-left));
+            if(height[left] < height[right]){
+                int currentLeftHeight = height[left];
+                while (left<right && height[left]<=currentLeftHeight) left++;
             }
-            if(right>left){
-                int newResult = calculateArea(height,  left,  right);
-                if(newResult>result){
-                    result=newResult;
-                }
+            else{
+                int currentRightHeight = height[right];
+                while (left<right && height[right]<=currentRightHeight) right--;
             }
-            else return  result;
         }
-        return result;
+        return maxVolume;
     }
 
-    public static int calculateArea(int[] height, int left, int right){
-        return Math.abs(left - right)*Math.min(height[right],height[left]);
-    }
+
     
     public static void main(String[] args) {
         int[] height1 = {1,8,6,2,5,4,8,3,7};
